@@ -23,6 +23,13 @@ require 'erb'
 require 'oauth'
 require 'twitter'
 
+require 'awesome_print'
+
+require 'sidekiq'
+require 'redis'
+
+require 'slim'
+
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
@@ -34,6 +41,12 @@ Dir[APP_ROOT.join('app', 'helpers', '*.rb')].each { |file| require file }
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+
+config = YAML.load_file(APP_ROOT.join('config', 'twitter.yml'))
+#config = YAML.load_file('config/twilio.yaml')
+config.each do |key, value|
+  ENV[key] = value
+end
 
 Twitter.configure do |config|
   config.consumer_key = ENV['TWITTER_KEY']

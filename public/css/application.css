@@ -9,3 +9,16 @@ button a {
   text-decoration: none;
   color: black;
 }
+
+th {
+  text-align: left;
+}
+
+li {
+  padding-top: 10px;
+  list-style: none;
+}
+
+#header {
+  margin-left: 240px;
+}
