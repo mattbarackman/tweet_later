@@ -18,12 +18,14 @@ get '/auth' do
 end
 
 post '/' do
-  job_id = current_user.tweet(params[:tweet])
+  p params
+  delay = Chronic.parse(params[:delay])
+  job_id = current_user.tweet(params[:tweet], delay)
   job_id
 end  
 
 get '/status/:job_id' do |job_id|
-  p job_is_complete(job_id).to_s
+  job_is_complete(job_id)
 end
 
 get '/sign_out' do

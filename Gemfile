@@ -24,6 +24,7 @@ gem 'awesome_print'
 gem "sidekiq"
 gem "redis"
 gem "slim"
+gem "chronic"
 
 group :test do
   gem 'faker'

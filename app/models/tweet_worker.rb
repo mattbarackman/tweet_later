@@ -1,7 +1,7 @@
 class TweetWorker
   include Sidekiq::Worker
 
-  sidekiq_options :retry => false
+  sidekiq_options :retry => 1
 
   def perform(tweet_id)
     tweet = Tweet.find(tweet_id)
@@ -20,22 +20,11 @@ class TweetWorker
       config.oauth_token_secret = user.oauth_secret
     end
 
-
-    # sent = "true"
-    # begin
     Twitter.update(tweet.text)
-
-    # rescue Exception => e
-    #   p e
-    #   sent = "false"
-    # end
-    # sent.to_json
-    # set up Twitter OAuth client here
-    # actually make API call
-    # Note: this does not have access to controller/view helpers
-    # You'll have to re-initialize everything inside here
 
   end
   
-
+  def retries_exhausted
+    "failed"
+  end
 end
