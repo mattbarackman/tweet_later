@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activemodel (3.2.12)
       activesupport (= 3.2.12)
@@ -18,8 +18,15 @@ GEM
     celluloid (0.14.1)
       timers (>= 1.0.0)
     chronic (0.9.1)
+    columnize (0.3.6)
     connection_pool (1.1.0)
     daemons (1.1.9)
+    debugger (1.6.1)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.2.3)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.2.3)
     diff-lcs (1.2.4)
     eventmachine (1.0.3)
     faker (1.1.2)
@@ -84,6 +91,7 @@ DEPENDENCIES
   activesupport
   awesome_print
   chronic
+  debugger
   faker
   oauth
   pg
